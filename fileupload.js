@@ -14,7 +14,7 @@ module.exports = (app) => {
 
 
 // app.use(bodyParser.json())
-const conn = mongoose.createConnection('mongodb://localhost/')
+const conn = mongoose.createConnection('mongodb://check:shahood123@ds157923.mlab.com:57923/plantsdb')
 
 let gfs;
 conn.once('open', () => {
