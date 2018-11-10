@@ -27,7 +27,7 @@ conn.once('open', () => {
 const storage = new GridFsStorage({
 
 
-    url: 'mongodb://localhost/',
+    url: 'mongodb://check:shahood123@ds157923.mlab.com:57923/plantsdb',
     file: (req, file) => {
         return new Promise((resolve, reject) => {
             crypto.randomBytes(16, (err, buf) => {
