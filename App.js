@@ -5,8 +5,8 @@ var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
 
 var uploadRoute = require('./fileupload')
-// mongoose.connect('mongodb://patient:patient123@ds139869.mlab.com:39869/patient',
-mongoose.connect('mongodb://localhost/',
+// mongodb://check:shahood123@ds157923.mlab.com:57923/plantsdb
+mongoose.connect('mongodb://check:shahood123@ds157923.mlab.com:57923/plantsdb',
     {
         // useMongoClient: true
     })
