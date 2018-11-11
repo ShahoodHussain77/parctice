@@ -22,12 +22,11 @@ const sizes = new Schema({
 
     },
     qty:{
-    {
         type: String,
         required: true
 
     },
-    }
+    
 
 })
 
