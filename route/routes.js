@@ -13,11 +13,16 @@ module.exports = (app) => {
 
 
 
-
-    // add plant product
+ // add plant product
 
     app.post('/api/plant/addItem', productControler.addProduct)
+    
+    
+    // get all products
+    app.get('/api/getAll/plantsInfo', productControler.getAllProduct)
+    
 
+    app.post('/api/delete/singleRecord' , productControler.deleteRecord)
 
 
 }
