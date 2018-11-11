@@ -78,6 +78,15 @@ const addProduct = new Schema({
         type: String,
         required: true
     },
+
+    tranType: {
+        type: String,
+        required: true
+    },
+    tranId: {
+        type: String
+    },
+
 })
 
 
