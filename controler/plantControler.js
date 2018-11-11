@@ -11,8 +11,7 @@ module.exports = {
 
 
 
-
-        if (data.tranType === 'ADD') {
+         if (data.tranType === 'ADD') {
             console.log(data.tranType)
 
             product.create(data)
@@ -24,8 +23,8 @@ module.exports = {
                             if (err) {
                                 res.send({ message: 'Error', response: false, })
                             }
+                            res.send(doc)
                         })
-                        res.send(res)
                     }
                     // res.send(response)
                 })
@@ -34,6 +33,8 @@ module.exports = {
                 })
 
         }
+
+        
 
 
         if (data.tranType === 'EDIT') {
