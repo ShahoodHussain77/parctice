@@ -33,8 +33,6 @@ const sizes = new Schema({
 
 
 const imageObj = new Schema({
-
-
     fieldname: String,
     originalname: String,
     encoding: String,
@@ -60,22 +58,16 @@ const addProduct = new Schema({
     },
     description: {
         type: String,
-        required: true,
+        // required: true,
     },
-    shotDescription: {
+    shortDescription: {
         type: String,
-        required: true,
+        // required: true,
     },
-    pricePerItem: {
-        type: String,
-        required: true,
-    },
-
     creadedDate: {
         type: String,
         required: true,
     },
-
     potSizes: {
         type: [sizes]
     },
@@ -85,13 +77,9 @@ const addProduct = new Schema({
     productName:{
         type: String,
         required: true
-
     },
-
 })
 
 
 const product = mongoose.model("Products", addProduct)
 module.exports = product
-
-
