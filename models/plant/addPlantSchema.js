@@ -11,10 +11,22 @@ const sizes = new Schema({
     },
 
     // shoper size or pot size
-    Size: {
+    size: {
         type: String,
         required: true
 
+    },
+    price:{
+        type: String,
+        required: true
+
+    },
+    qty:{
+    {
+        type: String,
+        required: true
+
+    },
     }
 
 })
@@ -47,14 +59,6 @@ const addProduct = new Schema({
     isActive: {
         type: Boolean,
     },
-    totalQty: {
-        type: String,
-        required: true,
-    },
-    availableQty: {
-        type: String,
-        required: true,
-    },
     description: {
         type: String,
         required: true,
@@ -68,7 +72,7 @@ const addProduct = new Schema({
         required: true,
     },
 
-    recordCreateDate: {
+    creadedDate: {
         type: String,
         required: true,
     },
@@ -78,6 +82,11 @@ const addProduct = new Schema({
     },
     shopperSizes: {
         type: [sizes]
+    },
+    productName:{
+        type: String,
+        required: true
+
     },
 
 })
