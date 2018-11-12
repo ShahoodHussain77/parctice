@@ -88,6 +88,9 @@ const addProduct = new Schema({
     tranId: {
         type: String
     },
+     updatedDate:{
+        type: String
+    }
 
 })
 
