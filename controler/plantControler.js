@@ -149,7 +149,22 @@ module.exports = {
                 res.send(err)
             }
         })
-    }
+    },
+    
+       getHistory: (req, res, next) => {
+        var id = req.body.tranId
+        history.findOne({ tranId: id }, (err, found) => {
+            if (found) {
+                res.send({ data: found })
+            }
+            else {
+                res.send({ data: found })
+            }
+            if (err) {
+                res.send(err)
+            }
+        })
+    },
 
 }
 
