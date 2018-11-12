@@ -26,6 +26,8 @@ const sizes = new Schema({
         required: true
 
     },
+     height: {type: String,},
+     width: {type: String,}
     
 
 })
