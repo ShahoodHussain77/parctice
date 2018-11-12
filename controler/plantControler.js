@@ -37,45 +37,78 @@ module.exports = {
         
 
 
-        if (data.tranType === 'EDIT') {
+       if (data.tranType === 'EDIT') {
+            console.log('EDIT')
             product.findOneAndUpdate({ tranId: data.tranId }, { $set: data }, function (err, found) {
                 if (found) {
                     const recordId = data.tranId
                     const record = data
 
-
-
                     history.findOne({ tranId: recordId }, (isNoRecord, isRecord) => {
-
                         if (isRecord) {
                             console.log('mil gaya create nai karo')
-
-                            history.findByIdAndUpdate({ tranId: recordId }, { $push: { historyDetails: data } }, (ha, ho) => {
-
-                                if (ho) {
-                                    console.log('push kr dia')
-                                }
-
-                                else {
-                                    console.log('nai kara push')
+                            history.findOneAndUpdate({ tranId: recordId }, { $push: { historyDetails: record } }, (notFound, find) => {
+                                if (find) {
+                                    console.log('pushed')
+                                    res.send(data)
                                 }
                             })
                         }
                         else {
-                            console.log('create kar do ')
+                            console.log('create krna pary gi histrory')
+                            history.create({ tranId: recordId, historyDetails: record })
+                                .then((results) => {
+                                    res.send(results)
+                                })
+                                .catch((error) => {
+                                    res.send(error)
+                                })
                         }
                     })
-
-                    // history.create({ tranId: recordId, historyDetails: record })
-
-                    //     .then((results) => {
-                    //         res.send(results)
-                    //     })
-                    //     .catch((error) => {
-                    //         res.send(error)
-                    //     })
-                    // res.send(found)
                 }
+                else {
+                    console.log('not found')
+                }
+
+                if (err) {
+                    res.send({ error: 'no record found' })
+                }
+            })
+        }
+        
+        if (data.tranType === 'EDIT') {
+          
+            product.findOneAndUpdate({ tranId: data.tranId }, { $set: data }, function (err, found) {
+                if (found) {
+                    const recordId = data.tranId
+                    const record = data
+
+                    history.findOne({ tranId: recordId }, (isNoRecord, isRecord) => {
+                        if (isRecord) {
+                            console.log('mil gaya create nai karo')
+                            history.findOneAndUpdate({ tranId: recordId }, { $push: { historyDetails: record } }, (notFound, find) => {
+                                if (find) {
+                                    
+                                    res.send(data)
+                                }
+                            })
+                        }
+                        else {
+                            console.log('create krna pary gi histrory')
+                            history.create({ tranId: recordId, historyDetails: record })
+                                .then((results) => {
+                                    res.send(results)
+                                })
+                                .catch((error) => {
+                                    res.send(error)
+                                })
+                        }
+                    })
+                }
+                else {
+                    console.log('not found')
+                }
+
                 if (err) {
                     res.send({ error: 'no record found' })
                 }
