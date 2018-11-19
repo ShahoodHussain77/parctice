@@ -9,12 +9,12 @@ var multer = require('multer')
 var GridFsStorage = require('multer-gridfs-storage')
 var Grid = require('gridfs-stream')
 
-
+var constant = require("./constants/constant")
 module.exports = (app) => {
 
 
 // app.use(bodyParser.json())
-const conn = mongoose.createConnection('mongodb://check:shahood123@ds157923.mlab.com:57923/plantsdb')
+const conn = mongoose.createConnection(constant.BASE_URL)
 
 let gfs;
 conn.once('open', () => {
@@ -27,7 +27,7 @@ conn.once('open', () => {
 const storage = new GridFsStorage({
 
 
-    url: 'mongodb://check:shahood123@ds157923.mlab.com:57923/plantsdb',
+    url: constant.BASE_URL,
     file: (req, file) => {
         return new Promise((resolve, reject) => {
             crypto.randomBytes(16, (err, buf) => {

@@ -1,12 +1,21 @@
 var express = require('express')
 var app = express()
 var routes = require("./route/routes")
+var plantRoutes = require("./route/plantRoutes")
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
 
 var uploadRoute = require('./fileupload')
-// mongodb://check:shahood123@ds157923.mlab.com:57923/plantsdb
-mongoose.connect('mongodb://check:shahood123@ds157923.mlab.com:57923/plantsdb',
+
+
+var constants = require("./constants/constant")
+
+
+
+
+
+
+mongoose.connect(constants.BASE_URL,
     {
         // useMongoClient: true
     })
@@ -14,11 +23,11 @@ mongoose.connect('mongodb://check:shahood123@ds157923.mlab.com:57923/plantsdb',
 app.use(bodyParser.json())
 
 routes(app)
-uploadRoute(app
+uploadRoute(app)
+plantRoutes(app)
 
 
 
-)
 app.use((err, req, res, next) => {
 
     console.log(err.message)
